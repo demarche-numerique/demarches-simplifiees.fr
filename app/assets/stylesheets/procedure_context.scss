@@ -21,6 +21,25 @@ $procedure-context-breakpoint: $two-columns-breakpoint;
     font-size: 12px;
   }
 
+  .merci {
+    padding-top: 0 !important;
+
+    .fr-container {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .preview-spacing {
+      max-width: 0;
+    }
+
+    .preview-content {
+      flex: 0 0 calc(1200% / 12);
+      width: calc(1200% / 12);
+      max-width: calc(1200% / 12);
+    }
+  }
+
   .procedure-logos {
     display: flex;
     align-items: center;
