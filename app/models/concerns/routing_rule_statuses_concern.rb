@@ -24,7 +24,7 @@ module RoutingRuleStatusesConcern
       # Get ids from groupe_instructeurs with same routing rule
       rule_gis = Hash.new { |h, k| h[k] = [] }
 
-      self.groupe_instructeurs.filter { it.routing_rule.present? }.each_with_object(rule_gis) do |gi, h|
+      self.groupe_instructeurs.each_with_object(rule_gis) do |gi, h|
         h[gi.routing_rule] << gi.id
       end
 
@@ -32,7 +32,6 @@ module RoutingRuleStatusesConcern
 
       # Update unique_routing_rule in all groups
       self.groupe_instructeurs.update_all(unique_routing_rule: true)
-      self.groupe_instructeurs.where(routing_rule: nil).update_all(unique_routing_rule: false)
       self.groupe_instructeurs.where(id: duplicate_ids).update_all(unique_routing_rule: false)
     end
 
